@@ -5,11 +5,14 @@ const myContainer = document.querySelector('section');
 const myButton = document.querySelector('section + div');
 let image1 = document.querySelector('section img:first-child');
 let image2 = document.querySelector('section img:nth-child(2)');
+let image3 = document.querySelector('section img:nth-child(3)');
 const results = document.querySelector('ul');
 
 let allProducts = [];
 let clicks = 0;
-const clicksAllowed = 15;
+let noRepeats = [0,0,0]
+let deDupe = []
+const clicksAllowed = 40;
 
 function Product(name, fileExtension = 'jpg') {
   this.name = name;
@@ -42,22 +45,39 @@ new Product('wine-glass');
 function selectRandomProduct() {
   return Math.floor(Math.random() * allProducts.length);
 }
-console.log(selectRandomProduct());
 
 function renderProduct() {
   let Product1 = selectRandomProduct();
   let Product2 = selectRandomProduct();
-  // array method .includes()
-  while (Product1 === Product2) {
-    Product2 = selectRandomProduct();
+  let Product3 = selectRandomProduct();
+  let noRepeats = [Product1,Product2,Product3]
+  let deDupe = new Set(noRepeats);
+
+  while (noRepeats.length != deDupe.size) {
+      Product1 = selectRandomProduct();
+      Product2 = selectRandomProduct();
+      Product3 = selectRandomProduct(); 
+      noRepeats = [Product1,Product2,Product3]
+      deDupe = new Set(noRepeats);
   }
-  image1.src = allProducts[Product1].src;
-  image1.alt = allProducts[Product1].name;
-  allProducts[Product1].views++;
-  image2.src = allProducts[Product2].src;
-  image2.alt = allProducts[Product2].name;
-  allProducts[Product2].views++;
+
+  // array method .includes()
+  // while (Product1 === Product2 && Product2 === Product3 && Product1 === Product3) {
+  //   Product1 = selectRandomProduct()
+  //   Product2 = selectRandomProduct();
+     //   Product3 = selectRandomProduct(); 
+  // }
+    image1.src = allProducts[Product1].src;
+    image1.alt = allProducts[Product1].name;
+    allProducts[Product1].views++;
+    image2.src = allProducts[Product2].src;
+    image2.alt = allProducts[Product2].name;
+    allProducts[Product2].views++;   
+    image3.src = allProducts[Product3].src;
+    image3.alt = allProducts[Product3].name;
+    allProducts[Product3].views++;
 }
+
 
 function handleProductClick(event) {
   if (event.target === myContainer) {
