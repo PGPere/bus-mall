@@ -12,7 +12,7 @@ let allProducts = [];
 let clicks = 0;
 let noRepeats = [0,0,0]
 let deDupe = []
-const clicksAllowed = 40;
+const clicksAllowed = 20;
 
 function Product(name, fileExtension = 'jpg') {
   this.name = name;
@@ -61,12 +61,6 @@ function renderProduct() {
       deDupe = new Set(noRepeats);
   }
 
-  // array method .includes()
-  // while (Product1 === Product2 && Product2 === Product3 && Product1 === Product3) {
-  //   Product1 = selectRandomProduct()
-  //   Product2 = selectRandomProduct();
-     //   Product3 = selectRandomProduct(); 
-  // }
     image1.src = allProducts[Product1].src;
     image1.alt = allProducts[Product1].name;
     allProducts[Product1].views++;
