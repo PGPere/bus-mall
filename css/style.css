@@ -1,175 +1,53 @@
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body {
-  background-color: linen;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  background-color: navy;
+  color: white;
+}
+
+h1 {
+  font-size: 4rem;
+  color: lightsalmon;
 }
 
 header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  background-color: rgb(23, 23, 24);
-  width: 100%;
-  margin: 2 rem 0 0 0;
-  height: 120px;
-}
-
-header > h1 {
-  color: ivory;
-  font-size: 4rem;
-}
-
-nav {
-  display: flex;
-  flex-direction: row;
-  width: 960px;
-  margin: 0 auto;
-  padding: 2.5rem 0;
-  /* align-items: center;
-  align-content: space-around; */
-}
-
-header nav ul {
-  margin-left: 1rem;
-  vertical-align: middle;
-}
-
-header ul li {
-  display: inline-block;
-  padding: 0.5rem;
-  color: ivory;
-  background-color: slategray;
-}
-
-header ul li a {
-  padding: 2.5rem;
-  color: ivory;
+  margin: 2rem auto 1rem;
 }
 
 main {
-  margin: 0 auto;
-  width: 960px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  font-size: xx-large;
+  padding-top: 2rem;
 }
 
-main article h3 {
+ul li {
+  line-height: 160%;
+  font-size: 1.5rem;
+}
+
+/* -- VOTING BLOCK -- */
+
+section {
   display: inline-flex;
-  width: 20rem;
-  color: black;
-  justify-content: left;
-  font-size: x-large;
+  /* display: flex;*/
+  justify-content: space-evenly;
+  /* width: auto; */
+  background-color: whitesmoke;
+  margin: 2rem auto 1rem;
+  /* padding: 1rem; */
+  font-size: 2rem;
 }
 
-main > section {
-  display: flex;
-  size: 50pt;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow: scroll;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-main article {
-  float: right;
-  width: 480px;
-  padding: 1rem 0 0 2rem;
-  /* padding-top: 30px; */
-  /* padding-bottom: 30px; */
-  text-justify: auto;
-}
-
-main article section {
-  overflow: scroll;
-  height: 180px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-}
-
-main article a {
-  display: inline-flex;
-  margin-top: 1rem;
-  padding-block: 0.5rem;
-  width: 10rem;
-  color: black;
-  justify-content: center;
-  font-size: larger;
-  text-decoration: none;
-  border: solid black;
-}
-footer {
-  padding-top: 30px;
-  background-color: rgb(23, 23, 24);
-  width: 100%;
-  margin: 0 auto;
-  height: 110px;
-  text-align: center;
-}
-
-footer > a {
-  font-size: 50px;
-  text-decoration: none;
-  color: crimson;
-}
-
-table {
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  margin: 1rem;
-}
-
-table,
-td {
-  border: 1px solid rgb(112, 159, 165);
-}
-
-td {
+section img {
+  width: 25%;
   padding: 1rem;
-  vertical-align: middle;
-}
-thead th {
-  font-weight: bold;
-  font-size: small;
-  border: 0px solid rgb(112, 159, 165);
-  column-width: 7rem;
-  vertical-align: middle;
-}
-tfoot {
-  padding-left: 1rem;
-  padding-top: 0.5rem;
-  height: 2rem;
-  background-color: darkblue;
-  color: white;
-  font-size: large;
-  text-align: center;
+  /* margin: auto; */
+  border: 5px solid transparent;
 }
 
-form {
-  color: white;
-  margin-left: 1rem;
-  width: 1150px;
-  background-color: blue;
-  padding: 30px;
-}
-
-input {
-  /* display: block; */
-  margin-bottom: 25px;
-}
-
-input[type="radio"],
-input[type="checkbox"] {
-  display: inline-block;
-}
-
-label {
-  /* display: block; */
-}
-
-select {
-  display: block;
-  margin-bottom: 25px;
+section img:hover {
+  border: 5px solid rgb(169, 108, 28);
+  cursor: pointer;
 }
