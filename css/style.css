@@ -24,6 +24,7 @@ main {
 
 ul li {
   line-height: 160%;
+  font-size: 1.5rem;
 }
 
 /* -- VOTING BLOCK -- */
@@ -36,6 +37,7 @@ section {
   background-color: whitesmoke;
   margin: 2rem auto 1rem;
   /* padding: 1rem; */
+  font-size: 2rem;
 }
 
 section img {
@@ -48,23 +50,4 @@ section img {
 section img:hover {
   border: 5px solid rgb(169, 108, 28);
   cursor: pointer;
-}
-
-/* -- button -- */
-section + div {
-  background-color: magenta;
-  color: white;
-  padding: 0.5rem 1rem;
-  width: max-content;
-  font-size: 1.5rem;
-  pointer-events: none;
-}
-section + div.clicks-allowed {
-  background-color: brown;
-  color: white;
-  cursor: pointer;
-  pointer-events: auto;
-}
-section + div.clicks-allowed:hover {
-  background-color: aquamarine;
 }
