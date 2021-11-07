@@ -12,35 +12,27 @@ let allProducts = [];
 let clicks = 0;
 let noRepeats = [];
 let productSet = [];
-const clicksAllowed = 15;
+// let fileExtension = 'jpg'
+const clicksAllowed = 5;
 
-function Product(name, fileExtension = 'jpg') {
+function Product(name,likes,views,fileExtension = 'jpg') {
   this.name = name;
   this.src = `images/${name}.${fileExtension}`;
-  this.likes = 0;
-  this.views = 0;
-  allProducts.push(this);
+  this.likes = likes;
+  this.views = views;
+  this.fileExtension = fileExtension;
+  // allProducts.push(this);
 }
 
-new Product('sweep','png');
-new Product('bag');
-new Product('banana');
-new Product('bathroom');
-new Product('boots');
-new Product('breakfast');
-new Product('bubblegum');
-new Product('chair');
-new Product('cthulhu');
-new Product('dog-duck');
-new Product('dragon');
-new Product('pen');
-new Product('pet-sweep');
-new Product('scissors');
-new Product('shark');
-new Product('tauntaun');
-new Product('unicorn');
-new Product('water-can');
-new Product('wine-glass');
+function makeAProduct(name, likes, views, fileExtension) {
+  // run the product through the product constructor
+  let ProductObj = new Product(name, likes, views, fileExtension);
+  // push the new Drink instance to the drink array
+  allProducts.push(ProductObj);
+  // render that drink as an LI
+  // ProductObj.renderChart();
+  console.log(allProducts.length);
+}
 
 function selectRandomProduct() {
   return Math.floor(Math.random() * allProducts.length);
@@ -59,6 +51,8 @@ function renderProduct() {
   let product2 = productSet.shift();
   let product3 = productSet.shift();
 
+  console.log(allProducts);
+
   image1.src = allProducts[product1].src;
   image1.alt = allProducts[product1].name;
   allProducts[product1].views++;
@@ -71,25 +65,93 @@ function renderProduct() {
 
   }
 
+// put produucts in storage
+
+function storeProducts() {
+  // "product" is our KEY
+  // turn my array into a string
+  console.log(allProducts);
+  let stringifiedProducts = JSON.stringify(allProducts);
+  console.log(stringifiedProducts);
+  // put my string in local storage
+  localStorage.setItem('product', stringifiedProducts);
+}
+
+
+// get product out of storage
+
+function getProducts() {
+  // check if I have product in storage
+  let potentialProducts = localStorage.getItem('product');
+  // if I do, do something with them
+  console.log(potentialProducts);
+  if (potentialProducts) {
+    let parsedProducts = JSON.parse(potentialProducts);
+    // run the parsed products back through the constructor function
+    // this is called REINSTANITATE
+    for (let product of parsedProducts) {
+    // product.name for sweep is sweep  
+      let name = product.name;
+      let likes = product.likes;
+      let views = product.views;
+      let fileExtension = product.fileExtension;
+      makeAProduct(name,likes,views,fileExtension);
+    }
+  }
+}
+  makeAProduct('sweep',0,0,'png');
+  makeAProduct('bag',0,0);
+  makeAProduct('banana',0,0);
+  makeAProduct('bathroom',0,0);
+  makeAProduct('boots',0,0);
+  makeAProduct('breakfast',0,0);
+  makeAProduct('bubblegum',0,0);
+  makeAProduct('chair',0,0);
+  makeAProduct('cthulhu',0,0);
+  makeAProduct('dog-duck',0,0);
+  makeAProduct('dragon',0,0);
+  makeAProduct('pen',0,0);
+  makeAProduct('pet-sweep',0,0);
+  makeAProduct('scissors',0,0);
+  makeAProduct('shark',0,0);
+  makeAProduct('tauntaun',0,0);
+  makeAProduct('unicorn',0,0);
+  makeAProduct('water-can',0,0);
+  makeAProduct('wine-glass',0,0);
+
+console.log(allProducts);
+storeProducts();
+
+
+
+//------------Handling the event--------------//
+
 function handleProductClick(event) {
   if (event.target === myContainer) {
     alert('Please click on an image');
   }
   clicks++;
   let clickedProduct = event.target.alt;
-  // array method .includes()
+  
   for (let i = 0; i < allProducts.length; i++) {
     if (clickedProduct === allProducts[i].name) {
       allProducts[i].likes++;
       break;
     }
   }
-  renderProduct();
+  storeProducts();
+  // renderProduct();
+  // storeProducts();
+
   if (clicks === clicksAllowed) {
     myContainer.removeEventListener('click', handleProductClick);
     renderChart();
   }
+  getProducts();
+  // storeProducts();
 }
+// getProducts();
+//------------render Chart--------------//
 
 function renderChart() {
   let productNames = [];
@@ -127,6 +189,8 @@ function renderChart() {
       borderWidth: 1
     }]
   };
+
+  Chart.defaults.font.size = 24;
 
   const config = {
     type: 'bar',
