@@ -12,8 +12,7 @@ let allProducts = [];
 let clicks = 0;
 let noRepeats = [];
 let productSet = [];
-// let fileExtension = 'jpg'
-const clicksAllowed = 5;
+const clicksAllowed = 10;
 
 function Product(name,likes,views,fileExtension = 'jpg') {
   this.name = name;
@@ -21,17 +20,15 @@ function Product(name,likes,views,fileExtension = 'jpg') {
   this.likes = likes;
   this.views = views;
   this.fileExtension = fileExtension;
-  // allProducts.push(this);
 }
 
 function makeAProduct(name, likes, views, fileExtension) {
   // run the product through the product constructor
   let ProductObj = new Product(name, likes, views, fileExtension);
-  // push the new Drink instance to the drink array
+  // push the new product instance to the product array
   allProducts.push(ProductObj);
   // render that drink as an LI
-  // ProductObj.renderChart();
-  console.log(allProducts.length);
+  // console.log(allProducts.length);
 }
 
 function selectRandomProduct() {
@@ -51,7 +48,7 @@ function renderProduct() {
   let product2 = productSet.shift();
   let product3 = productSet.shift();
 
-  console.log(allProducts);
+  // console.log(allProducts);
 
   image1.src = allProducts[product1].src;
   image1.alt = allProducts[product1].name;
@@ -65,14 +62,14 @@ function renderProduct() {
 
   }
 
-// put produucts in storage
+// put products in storage
 
 function storeProducts() {
   // "product" is our KEY
   // turn my array into a string
-  console.log(allProducts);
+  // console.log(allProducts);
   let stringifiedProducts = JSON.stringify(allProducts);
-  console.log(stringifiedProducts);
+  // console.log(stringifiedProducts);
   // put my string in local storage
   localStorage.setItem('product', stringifiedProducts);
 }
@@ -97,8 +94,7 @@ function getProducts() {
       let fileExtension = product.fileExtension;
       makeAProduct(name,likes,views,fileExtension);
     }
-  }
-}
+  } else {
   makeAProduct('sweep',0,0,'png');
   makeAProduct('bag',0,0);
   makeAProduct('banana',0,0);
@@ -117,12 +113,33 @@ function getProducts() {
   makeAProduct('tauntaun',0,0);
   makeAProduct('unicorn',0,0);
   makeAProduct('water-can',0,0);
-  makeAProduct('wine-glass',0,0);
+  makeAProduct('wine-glass',0,0); 
+  } 
+  renderProduct();
+}
 
-console.log(allProducts);
-storeProducts();
+// makeAProduct('sweep',0,0,'png');
+// makeAProduct('bag',0,0);
+// makeAProduct('banana',0,0);
+// makeAProduct('bathroom',0,0);
+// makeAProduct('boots',0,0);
+// makeAProduct('breakfast',0,0);
+// makeAProduct('bubblegum',0,0);
+// makeAProduct('chair',0,0);
+// makeAProduct('cthulhu',0,0);
+// makeAProduct('dog-duck',0,0);
+// makeAProduct('dragon',0,0);
+// makeAProduct('pen',0,0);
+// makeAProduct('pet-sweep',0,0);
+// makeAProduct('scissors',0,0);
+// makeAProduct('shark',0,0);
+// makeAProduct('tauntaun',0,0);
+// makeAProduct('unicorn',0,0);
+// makeAProduct('water-can',0,0);
+// makeAProduct('wine-glass',0,0); 
 
 
+// console.log(allProducts);
 
 //------------Handling the event--------------//
 
@@ -139,18 +156,17 @@ function handleProductClick(event) {
       break;
     }
   }
-  storeProducts();
-  // renderProduct();
-  // storeProducts();
 
   if (clicks === clicksAllowed) {
     myContainer.removeEventListener('click', handleProductClick);
     renderChart();
+    storeProducts();
   }
-  getProducts();
-  // storeProducts();
+  renderProduct();
 }
-// getProducts();
+
+
+
 //------------render Chart--------------//
 
 function renderChart() {
@@ -170,12 +186,12 @@ function renderChart() {
       label: 'Likes',
       data: productLikes,
       backgroundColor: [
-        'rgba(255, 99, 132, 0.8)'
+        'rgba(255, 40, 132)'
       ],
       borderColor: [
-        'rgb(255, 99, 132)'
+        'rgb(255, 40, 132)'
       ],
-      borderWidth: 1
+      borderWidth: 2
     },
     {
       label: 'Views',
@@ -186,11 +202,11 @@ function renderChart() {
       borderColor: [
         'rgb(255, 159, 64)'
       ],
-      borderWidth: 1
+      borderWidth: 2
     }]
   };
 
-  Chart.defaults.font.size = 24;
+  Chart.defaults.font.size = 28;
 
   const config = {
     type: 'bar',
@@ -207,6 +223,6 @@ function renderChart() {
   const myChart = new Chart(canvasChart,config);
 }
 
-renderProduct();
+getProducts();
 
 myContainer.addEventListener('click', handleProductClick);
