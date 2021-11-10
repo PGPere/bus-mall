@@ -4,17 +4,24 @@
 
 body {
   font-family: Georgia, "Times New Roman", Times, serif;
-  background-color: navy;
+  background-color: lightskyblue;
   color: white;
 }
 
 h1 {
   font-size: 4rem;
-  color: lightsalmon;
+  color: navy;
 }
 
 header {
-  margin: 2rem auto 1rem;
+  margin-top: 3rem;
+  margin-left: 22rem;
+}
+
+h3 {
+  font-size: 3rem;
+  color: darkgoldenrod;
+  margin-left: 22rem;
 }
 
 main {
@@ -30,10 +37,10 @@ ul li {
 /* -- VOTING BLOCK -- */
 
 section {
-  display: inline-flex;
+  display: flex;
   /* display: flex;*/
   justify-content: space-evenly;
-  /* width: auto; */
+  width: 75%;
   background-color: whitesmoke;
   margin: 2rem auto 1rem;
   /* padding: 1rem; */
@@ -49,4 +56,9 @@ section img {
 section img:hover {
   border: 5px solid rgb(169, 108, 28);
   cursor: pointer;
+}
+
+canvas {
+  padding: 10rem;
+  margin: 7rem;
 }
