@@ -12,7 +12,9 @@ let allProducts = [];
 let clicks = 0;
 let noRepeats = [];
 let productSet = [];
-const clicksAllowed = 10;
+const clicksAllowed = 25;
+
+// Constructor Function
 
 function Product(name,likes,views,fileExtension = 'jpg') {
   this.name = name;
@@ -27,13 +29,13 @@ function makeAProduct(name, likes, views, fileExtension) {
   let ProductObj = new Product(name, likes, views, fileExtension);
   // push the new product instance to the product array
   allProducts.push(ProductObj);
-  // render that drink as an LI
-  // console.log(allProducts.length);
 }
 
 function selectRandomProduct() {
   return Math.floor(Math.random() * allProducts.length);
 }
+
+// this function renders product images
 
 function renderProduct() {
 
@@ -118,29 +120,6 @@ function getProducts() {
   renderProduct();
 }
 
-// makeAProduct('sweep',0,0,'png');
-// makeAProduct('bag',0,0);
-// makeAProduct('banana',0,0);
-// makeAProduct('bathroom',0,0);
-// makeAProduct('boots',0,0);
-// makeAProduct('breakfast',0,0);
-// makeAProduct('bubblegum',0,0);
-// makeAProduct('chair',0,0);
-// makeAProduct('cthulhu',0,0);
-// makeAProduct('dog-duck',0,0);
-// makeAProduct('dragon',0,0);
-// makeAProduct('pen',0,0);
-// makeAProduct('pet-sweep',0,0);
-// makeAProduct('scissors',0,0);
-// makeAProduct('shark',0,0);
-// makeAProduct('tauntaun',0,0);
-// makeAProduct('unicorn',0,0);
-// makeAProduct('water-can',0,0);
-// makeAProduct('wine-glass',0,0); 
-
-
-// console.log(allProducts);
-
 //------------Handling the event--------------//
 
 function handleProductClick(event) {
@@ -165,8 +144,6 @@ function handleProductClick(event) {
   renderProduct();
 }
 
-
-
 //------------render Chart--------------//
 
 function renderChart() {
@@ -178,7 +155,6 @@ function renderChart() {
     productLikes.push(allProducts[i].likes);
     productViews.push(allProducts[i].views);
   }
-  // console.log(ProductLikes);
 
   const data = {
     labels: productNames,
